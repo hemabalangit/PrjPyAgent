@@ -8,7 +8,7 @@ def home():
 
 @app.route('/api/agent', methods=['GET'])
 def agent():
-    return jsonify({"message": "Hello from Python Agent!"})
+    return jsonify({"message": "Room Booked Successfully!"})
 
 if __name__ == '__main__':
     app.run(debug=True)
