@@ -1,0 +1,13 @@
+[
+    {
+      "RoomNo": "101",
+      "AvailabilityDate": "2025-05-01",
+      "IsAvailable": true
+    },
+    {
+      "RoomNo": "102",
+      "AvailabilityDate": "2025-05-02",
+      "IsAvailable": false
+    }
+  ]
+  
