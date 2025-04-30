@@ -1,0 +1,77 @@
+{
+    "Concierge App": {
+      "Room Booking": {
+        "Agents": {
+          "Agent1": {
+            "Name": "Concierge Manager (Main Manager)",
+            "Agent Type": "Society of Mind Agent (Manager)",
+            "Reply Expected from the Manager": "Your booking has been completed. Proceeding with relationship mapping.",
+            "Termination condition": "",
+            "Max Rounds": "4",
+            "Agent Sequence": {
+              "Agent1_1": {
+                "Name": "Guest Interaction Manager",
+                "Agent Type": "Society of Mind Agent (Manager)",
+                "Reply Expected from the Manager": "Provide a complete response to the original booking request. Aggregate all intermediate outputs clearly. Do not add extra commentary.",
+                "Termination condition": "",
+                "Max Rounds": "6",
+                "Agent Sequence": {
+                  "Agent1_1_1": {
+                    "Name": "Room Search Assistant",
+                    "Agent Type": "Assistant",
+                    "Template Type": "Default",
+                    "Role": "Help the user search for available rooms based on preferences.",
+                    "Scope": "Takes input such as check-in/check-out dates, location, room type, and filters to search for available rooms.",
+                    "instructions": [
+                      "Collect necessary booking parameters such as dates, location, room type, and preferences.",
+                      "Use the 'search_rooms' tool to return a list of available rooms.",
+                      "Respond only with the list of matching rooms including hotel name, price, and features."
+                    ],
+                    "output_format": "List of room options (JSON)"
+                  },
+                  "Agent1_1_2": {
+                    "Name": "Room Booking Agent",
+                    "Agent Type": "Assistant",
+                    "Template Type": "Default",
+                    "Role": "Book a selected room using provided guest information.",
+                    "Scope": "Uses selected room ID, guest name, and payment details to confirm booking.",
+                    "instructions": [
+                      "Ensure the room ID and guest info are collected before booking.",
+                      "Call the 'book_room' tool and confirm the reservation.",
+                      "Respond with booking confirmation and reservation ID."
+                    ],
+                    "output_format": "Reservation confirmation in key-value format"
+                  },
+                  "Agent1_1_3": {
+                    "Name": "Booking Cancellation Agent",
+                    "Agent Type": "Assistant",
+                    "Template Type": "Default",
+                    "Role": "Assist in cancelling a reservation upon user request.",
+                    "Scope": "Takes reservation ID and processes cancellation using the 'cancel_booking' tool.",
+                    "instructions": [
+                      "Collect reservation ID and cancellation reason (if needed).",
+                      "Cancel the booking and return cancellation status and refund info."
+                    ],
+                    "output_format": "Cancellation response with status and refund info"
+                  },
+                  "Agent1_1_4": {
+                    "Name": "Booking Info Retriever",
+                    "Agent Type": "Assistant",
+                    "Template Type": "Default",
+                    "Role": "Retrieve booking details for the user.",
+                    "Scope": "Uses reservation ID or email to fetch existing booking details.",
+                    "instructions": [
+                      "Confirm user identity through reservation ID or email.",
+                      "Call 'get_booking_details' and respond with full booking info: guest name, dates, hotel, and room."
+                    ],
+                    "output_format": "Formatted key-value details of reservation"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
