@@ -4,11 +4,11 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def home():
-    return jsonify({"message": "Welcome to the Flask API!"})
+    return jsonify({"message": "Agent Success"})
 
 @app.route('/api/agent', methods=['GET'])
 def agent():
-    return jsonify({"message": "Room Booked Successfully!"})
+    return jsonify({"message": "Success!"})
 
 if __name__ == '__main__':
     app.run(debug=True)
